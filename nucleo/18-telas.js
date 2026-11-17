@@ -325,9 +325,9 @@ function telaFases() {
   } else texto('Conclua a fase anterior para liberar.', 38, 184, '#999', 8);
   if (aviso.t > 0) { aviso.t -= 1 / 60; textoContorno(aviso.txt, 192, 30, '#ff9a8a', 8, 'center'); }
   const cp = lib ? checkpointDaFase(faseSel) : null;
-  if (cp) texto('ENTER: continuar do checkpoint   N: recomeçar', 350, 203, '#7fd8ff', 6, 'right', false);
-  if (press('Enter', 'Space') || (cp && press('KeyN'))) jogar = true;
-  if (jogar) { if (lib) { som('ok'); if (cp && !press('KeyN')) continuarDoCheckpoint(cp); else { if (cp) limparCheckpoint(); iniciarFase(faseSel, true); } } else { som('erro'); aviso = { txt: 'Fase bloqueada!', t: 1.5 }; } }
+  if (cp) texto('ENTER: continuar do checkpoint   R: recomeçar', 350, 203, '#7fd8ff', 6, 'right', false);
+  if (press('Enter', 'Space') || (cp && press('KeyR'))) jogar = true;
+  if (jogar) { if (lib) { som('ok'); if (cp && !press('KeyR')) continuarDoCheckpoint(cp); else { if (cp) limparCheckpoint(); iniciarFase(faseSel, true); } } else { som('erro'); aviso = { txt: 'Fase bloqueada!', t: 1.5 }; } }
   if (press('Escape')) mudar('menu');
 }
 /* Linha de som da pausa: rótulo à esquerda e chave liga/desliga à direita */

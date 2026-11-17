@@ -4,6 +4,7 @@
    ===================================================================== */
 function quadro(dt) {
   lerControle();
+  atualizarToque();
   ctx.setTransform(ESC_TELA, 0, 0, ESC_TELA, 0, 0);
   ctx.imageSmoothingEnabled = false;
   if (estado !== 'conta') {                 // na tela de conta as letras M e N são texto
