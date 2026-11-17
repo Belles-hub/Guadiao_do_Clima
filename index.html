@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Guardião do Clima</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+  html, body { margin: 0; height: 100%; background: #080b14; overflow: hidden; }
+  body { display: flex; align-items: center; justify-content: center; }
+  canvas {
+    display: block; background: #000;
+    image-rendering: pixelated; image-rendering: crisp-edges;
+  }
+</style>
+</head>
+<body>
+<canvas id="tela"></canvas>
+<script src="nucleo/01-config.js"></script>
+<script src="nucleo/02-entrada-audio-save.js"></script>
+<script src="nucleo/02b-musica.js"></script>
+<script src="nucleo/02d-nuvem.js"></script>
+<script src="nucleo/02c-conta.js"></script>
+<script src="nucleo/03-dados.js"></script>
+<script src="nucleo/04-estado-e-menus.js"></script>
+<script src="nucleo/05-fisica.js"></script>
+<script src="nucleo/06-particulas.js"></script>
+<script src="nucleo/07-sprites.js"></script>
+<script src="nucleo/07b-arte-dados.js"></script>
+<script src="nucleo/07d-arte-dados2.js"></script>
+<script src="nucleo/07e-arte-dados3.js"></script>
+<script src="nucleo/07f-arte-dados4.js"></script>
+<script src="nucleo/07g-arte-vo.js"></script>
+<script src="nucleo/07h-arte-cenario.js"></script>
+<script src="nucleo/07c-arte.js"></script>
+<script src="nucleo/08-tiles.js"></script>
+<script src="nucleo/09-fase-e-jogador.js"></script>
+<script src="nucleo/10-jogador.js"></script>
+<script src="nucleo/11-inimigos.js"></script>
+<script src="nucleo/12-itens-e-projeteis.js"></script>
+<script src="nucleo/12b-licoes.js"></script>
+<script src="nucleo/12c-viloes.js"></script>
+<script src="nucleo/12d-guia.js"></script>
+<script src="nucleo/12e-poderes.js"></script>
+<script src="nucleo/13-crafting.js"></script>
+<script src="nucleo/14-camera.js"></script>
+<script src="nucleo/15-atualizar-fase.js"></script>
+<script src="nucleo/15b-checkpoint.js"></script>
+<script src="nucleo/16-desenho-da-fase.js"></script>
+<script src="nucleo/16b-ambiente.js"></script>
+<script src="nucleo/16c-luz.js"></script>
+<script src="nucleo/16d-cenarios.js"></script>
+<script src="nucleo/17-hud.js"></script>
+<script src="nucleo/18-telas.js"></script>
+<script src="nucleo/18b-quiz.js"></script>
+<script src="nucleo/18c-intro.js"></script>
+<script src="nucleo/18d-conta-tela.js"></script>
+<script src="nucleo/18f-cenas.js"></script>
+<script src="nucleo/18e-conquista.js"></script>
+<script src="nucleo/18g-armadura.js"></script>
+<script src="nucleo/18h-duelo.js"></script>
+<script src="nucleo/18i-reiniciar.js"></script>
+<script src="nucleo/19-loop.js"></script>
+<script src="fases/fase1-floresta/mapa.js"></script>
+<script src="fases/fase1-floresta/fundo.js"></script>
+<script src="fases/fase1-floresta/inimigos.js"></script>
+<script src="fases/fase1-floresta/vilao.js"></script>
+<script src="fases/fase1-floresta/fase.js"></script>
+<script src="fases/fase2-cidade/mapa.js"></script>
+<script src="fases/fase2-cidade/fundo.js"></script>
+<script src="fases/fase2-cidade/carro.js"></script>
+<script src="fases/fase2-cidade/vilao.js"></script>
+<script src="fases/fase2-cidade/fase.js"></script>
+<script src="fases/fase3-fabrica/mapa.js"></script>
+<script src="fases/fase3-fabrica/fundo.js"></script>
+<script src="fases/fase3-fabrica/chamine.js"></script>
+<script src="fases/fase3-fabrica/vilao.js"></script>
+<script src="fases/fase3-fabrica/fase.js"></script>
+<script src="fases/fase4-lixao/mapa.js"></script>
+<script src="fases/fase4-lixao/fundo.js"></script>
+<script src="fases/fase4-lixao/lixo.js"></script>
+<script src="fases/fase4-lixao/vilao.js"></script>
+<script src="fases/fase4-lixao/fase.js"></script>
+<script src="fases/fase5-oceano/mapa.js"></script>
+<script src="fases/fase5-oceano/fundo.js"></script>
+<script src="fases/fase5-oceano/agua-viva.js"></script>
+<script src="fases/fase5-oceano/vilao.js"></script>
+<script src="fases/fase5-oceano/fase.js"></script>
+<script src="fases/fase6-vulcao/mapa.js"></script>
+<script src="fases/fase6-vulcao/fundo.js"></script>
+<script src="fases/fase6-vulcao/fornax-desenho.js"></script>
+<script src="fases/fase6-vulcao/chefe.js"></script>
+<script src="fases/fase6-vulcao/vilao.js"></script>
+<script src="fases/fase6-vulcao/fase.js"></script>
+<script src="nucleo/20-iniciar.js"></script>
+</body>
+</html>

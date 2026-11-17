@@ -1,0 +1,10 @@
+{
+  "name": "guardiao-clima-servidor",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Back-end do Guardião do Clima: save na nuvem (Express + SQLite)",
+  "main": "servidor.js",
+  "scripts": { "start": "node servidor.js" },
+  "engines": { "node": ">=22.13" },
+  "dependencies": { "express": "^4.21.2" }
+}
