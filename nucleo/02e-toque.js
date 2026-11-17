@@ -146,5 +146,13 @@ canvas.addEventListener('touchend', e => { e.preventDefault(); }, { passive: fal
 window.addEventListener('contextmenu', e => { if (toque.ativo) e.preventDefault(); });
 
 /* Celular e tablet: o toque é o controle principal (pointer grosso e sem hover). Computador não entra, nem com tela de toque. */
-const eCelularOuTablet = () => { try { return window.matchMedia('(pointer: coarse)').matches && window.matchMedia('(hover: none)').matches && navigator.maxTouchPoints > 0; } catch (e) { return false; } };
+const eCelularOuTablet = () => {
+  try {
+    const tela = window.matchMedia('(pointer: coarse)').matches && window.matchMedia('(hover: none)').matches && navigator.maxTouchPoints > 0;
+    const ua = navigator.userAgent || '';
+    const movel = /Android|iPhone|iPad|iPod|Mobi|Tablet|Silk|Kindle/i.test(ua)                    // celular e tablet pelo sistema
+      || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);                                   // iPad que se apresenta como Mac
+    return tela || movel;
+  } catch (e) { return false; }
+};
 if (eCelularOuTablet()) { if (document.readyState === 'loading') window.addEventListener('DOMContentLoaded', ativarToque); else ativarToque(); }
