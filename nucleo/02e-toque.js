@@ -4,7 +4,7 @@
    - Botões na tela viram "teclas virtuais" (as mesmas do teclado), então o jogo não precisa saber a diferença.
    - Toque no canvas vira clique do mouse: menus, mapa de fases, quiz e oficina funcionam tocando direto.
    - A barra de direção aceita deslizar o dedo; vários botões funcionam ao mesmo tempo (andar + pular + atacar).
-   Só aparece em aparelhos com tela de toque (ou depois do primeiro toque, em notebooks com touch).
+   Os botões só aparecem em celulares e tablets (tela de toque como dispositivo principal). Em computador e notebook, mesmo com tela de toque, nada muda.
    ===================================================================== */
 const toque = { ativo: false, raiz: null, modo: '' };
 
@@ -58,7 +58,7 @@ function criarToque() {
     const dedos = new Set();
     const soltar = e => { dedos.delete(e.pointerId); if (!dedos.size) { teclaVirtual(code, false); el.classList.remove('on'); } };
     el.addEventListener('pointerdown', e => {
-      e.preventDefault(); ativarToque();
+      e.preventDefault();
       try { el.setPointerCapture(e.pointerId); } catch (x) {}
       dedos.add(e.pointerId); if (dedos.size === 1) { teclaVirtual(code, true); el.classList.add('on'); }
     });
@@ -79,7 +79,7 @@ function criarToque() {
     if (e.pointerId !== dedoDir) return; dedoDir = null;
     teclaVirtual('ArrowLeft', false); teclaVirtual('ArrowRight', false); setaE.classList.remove('on'); setaD.classList.remove('on');
   };
-  dir.addEventListener('pointerdown', e => { e.preventDefault(); ativarToque(); try { dir.setPointerCapture(e.pointerId); } catch (x) {} dedoDir = e.pointerId; lerDir(e); });
+  dir.addEventListener('pointerdown', e => { e.preventDefault(); try { dir.setPointerCapture(e.pointerId); } catch (x) {} dedoDir = e.pointerId; lerDir(e); });
   dir.addEventListener('pointermove', e => { if (e.pointerId === dedoDir) lerDir(e); });
   ['pointerup', 'pointercancel', 'lostpointercapture'].forEach(n => dir.addEventListener(n, fimDir));
   raiz.appendChild(dir);
@@ -120,7 +120,6 @@ function ativarToque() {
 
 /* Quais botões aparecem em cada tela */
 function modoToque() {
-  if (estado === 'conta') return '';
   if (estado === 'jogo') return craftAberto && !ajudaAberta ? 'jogo craft' : 'jogo';
   if (estado === 'menu') return 'fs';
   const r = (estado === 'fases' && typeof checkpointDaFase === 'function' && checkpointDaFase(faseSel) && faseSel < salvo.liberadas) ? ' fasesr' : '';
@@ -141,11 +140,11 @@ function posToque(t) {
   const r = canvas.getBoundingClientRect();
   mouse.x = (t.clientX - r.left) * LARG / r.width; mouse.y = (t.clientY - r.top) * ALT / r.height;
 }
-canvas.addEventListener('touchstart', e => { e.preventDefault(); ativarToque(); posToque(e.changedTouches[0]); mouse.moveu = true; mouse.clique = true; iniciarAudio(); }, { passive: false });
+canvas.addEventListener('touchstart', e => { e.preventDefault(); posToque(e.changedTouches[0]); mouse.moveu = true; mouse.clique = true; iniciarAudio(); }, { passive: false });
 canvas.addEventListener('touchmove', e => { e.preventDefault(); posToque(e.changedTouches[0]); mouse.moveu = true; }, { passive: false });
 canvas.addEventListener('touchend', e => { e.preventDefault(); }, { passive: false });
-window.addEventListener('touchstart', ativarToque, { passive: true });
 window.addEventListener('contextmenu', e => { if (toque.ativo) e.preventDefault(); });
 
-/* Aparelhos de toque já mostram os botões desde o início */
-try { if (navigator.maxTouchPoints > 0 && window.matchMedia('(pointer: coarse)').matches) window.addEventListener('DOMContentLoaded', ativarToque); if (document.readyState !== 'loading' && navigator.maxTouchPoints > 0 && window.matchMedia('(pointer: coarse)').matches) ativarToque(); } catch (e) {}
+/* Celular e tablet: o toque é o controle principal (pointer grosso e sem hover). Computador não entra, nem com tela de toque. */
+const eCelularOuTablet = () => { try { return window.matchMedia('(pointer: coarse)').matches && window.matchMedia('(hover: none)').matches && navigator.maxTouchPoints > 0; } catch (e) { return false; } };
+if (eCelularOuTablet()) { if (document.readyState === 'loading') window.addEventListener('DOMContentLoaded', ativarToque); else ativarToque(); }

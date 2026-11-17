@@ -13,7 +13,6 @@ function quadro(dt) {
   }
   atualizarMusica(dt);
   switch (estado) {
-    case 'conta': telaConta(dt); break;
     case 'menu': telaMenu(dt); break;
     case 'historia': telaHistoria(dt); break;
     case 'controles': telaControles(); break;

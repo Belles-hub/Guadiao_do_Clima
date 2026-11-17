@@ -22,15 +22,13 @@ function telaMenu(dt) {
   atualizarParticulas(dt); desenharParticulas();
   tituloCapa(tempoGlobal);
   textoContorno('SALVE O PLANETA!', 192, 95, '#fff6d0', 8, 'center');
-  textoContorno(usuario ? 'JOGADOR: ' + usuario.toUpperCase() : 'CONVIDADO', 4, 3, usuario ? '#9dff8a' : '#ffe0b0', 8, 'left');
   menuGrade([
     { txt: 'JOGAR', x: 133, y: 161, w: 94, h: 18, acao: () => { if (!salvo.historiaVista) iniciarHistoria(); else { faseSel = Math.min(5, salvo.liberadas - 1); mudar('fases'); } } },
     { txt: 'HISTÓRIA', x: 105, y: 184, w: 74, h: 14, acao: () => iniciarHistoria() },
     { txt: 'COMANDOS', x: 183, y: 184, w: 74, h: 14, acao: () => mudar('controles') },
-    { txt: usuario ? 'SAIR' : 'ENTRAR', x: 105, y: 201, w: 74, h: 13, acao: () => { if (usuario) sairDaConta(); abrirTelaConta(); } },
-    { txt: 'CRÉDITOS', x: 183, y: 201, w: 74, h: 13, acao: () => mudar('creditos') },
-    { txt: 'REINICIAR PROGRESSO', x: 4, y: 14, w: 100, h: 11, acao: () => mudar('reiniciar') }
-  ], [[0], [1, 2], [3, 4], [5]]);
+    { txt: 'CRÉDITOS', x: 143, y: 201, w: 98, h: 13, acao: () => mudar('creditos') },
+    { txt: 'REINICIAR', x: 4, y: 4, w: 68, h: 11, acao: () => mudar('reiniciar') }
+  ], [[0], [1, 2], [3], [4]]);
   if (aviso.t > 0) { aviso.t -= dt; textoContorno(aviso.txt, 192, 30, '#9dff8a', 8, 'center'); }
   textoContorno('M MÚSICA  N EFEITOS', 380, 3, '#ffffff', 8, 'right');
 }

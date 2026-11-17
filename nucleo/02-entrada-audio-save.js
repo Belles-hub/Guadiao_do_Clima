@@ -123,10 +123,10 @@ const SONS = {
 const som = (n, v = 1) => { volMul = v; try { SONS[n] && SONS[n](); } catch (e) {} volMul = 1; };
 
 /* ---------- progresso salvo (localStorage com try/catch) ---------- */
-const CHAVE_SAVE = 'guardiao_clima_v1';          // save do convidado (e dos saves antigos)
+const CHAVE_SAVE = 'guardiao_clima_v1';
 const salvoPadrao = () => ({ liberadas: 1, armas: {}, concluidas: {} });
 let salvo = salvoPadrao();
-let chaveSave = null;                            // definida ao entrar numa conta ou como convidado (02c-conta.js)
+const chaveSave = CHAVE_SAVE;
 function carregarProgresso() {
   salvo = salvoPadrao();
   try {
@@ -134,8 +134,5 @@ function carregarProgresso() {
     if (s) { const o = JSON.parse(s); if (o && typeof o === 'object') salvo = Object.assign(salvo, o); }
   } catch (e) {}
 }
-function salvarProgresso() {
-  if (!chaveSave) return;
-  try { localStorage.setItem(chaveSave, JSON.stringify(salvo)); } catch (e) {}
-  if (typeof nuvemAgendar === 'function') nuvemAgendar();   // cópia na nuvem (02d-nuvem.js), se houver servidor e conta
-}
+function salvarProgresso() { try { localStorage.setItem(chaveSave, JSON.stringify(salvo)); } catch (e) {} }
+carregarProgresso();

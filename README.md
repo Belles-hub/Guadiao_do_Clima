@@ -58,7 +58,7 @@ O conteúdo educativo aparece **dentro** da jogada, e não em um texto separado:
 - Armas para montar e melhorar com os materiais coletados.
 - Checkpoints: ao perder, continue de onde parou.
 - Botão para reiniciar o progresso.
-- Controles por teclado e por controle (joystick).
+- Controles por teclado, por controle (joystick) e por toque, com botões na tela no celular e no tablet.
 
 ## Controles
 
@@ -82,6 +82,6 @@ Feito em JavaScript puro com `<canvas>`, sem bibliotecas. Para jogar localmente,
 | `nucleo/` | motor do jogo: física, jogador, inimigos, telas, save, checkpoints |
 | `fases/` | uma pasta por fase (mapa, fundo, vilão e itens próprios) |
 | `arte/` | imagens |
-| `servidor/` | back-end opcional de save na nuvem (Express + SQLite/Supabase). **Não é usado na versão publicada.** |
+| `servidor/` | protótipo de save na nuvem (Express + SQLite/Supabase). **Não é usado pelo jogo:** o progresso fica salvo no navegador. |
 
 A versão publicada é um site estático no GitHub Pages: qualquer mudança enviada à branch `main` é publicada sozinha.
